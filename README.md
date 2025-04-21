@@ -33,4 +33,4 @@ pip install -r requirements.txt
 
 # STEP 03- Run using Streamlit
 
-stramlit run app.py
+streamlit run app.py
