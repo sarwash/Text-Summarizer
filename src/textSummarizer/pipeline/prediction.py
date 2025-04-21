@@ -1,6 +1,7 @@
 from src.textSummarizer.config.configuration import ConfigurationManager
 from transformers import AutoTokenizer
 from transformers import pipeline
+import re
 
 
 class PredictionPipeline:
@@ -19,6 +20,8 @@ class PredictionPipeline:
         print(text)
 
         output = pipe(text, **gen_kwargs)[0]["summary_text"]
+        output = output.replace("<n>", "\n")
+        output = re.sub(r'\s+([.,!?])', r'\1', output)
         print("\nModel Summary:")
         print(output)
 
